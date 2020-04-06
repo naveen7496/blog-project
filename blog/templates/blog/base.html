@@ -26,12 +26,21 @@
   </div>
   <div class="navbar-collapse collapse">
         <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
             </li>&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>&nbsp;
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>&nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>&nbsp;&nbsp;&nbsp;&nbsp;
+            {% endif %}
         </ul>
     </div>
 </nav>
